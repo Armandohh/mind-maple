@@ -1,0 +1,13 @@
+input {
+    padding: 15px;
+    margin: 10px 0px;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+}
+.description {
+    height: 100px;
+    width: 600px;
+}
