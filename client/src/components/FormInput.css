@@ -3,6 +3,22 @@ input {
     margin: 10px 0px;
 }
 
+input:invalid[focused="true"] {
+    border: 1px solid red;
+    
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block;
+}
+
+span {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
 .formInput {
     display: flex;
     flex-direction: column;

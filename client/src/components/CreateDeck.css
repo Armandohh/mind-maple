@@ -1,12 +1,9 @@
 form {
-    background-color: black;
+    background-color: gray;
     padding: 0px 60px;
     border-radius: 10px;
 }
 
-h1 {
-    
-}
 
 button {
     width: 100%;
