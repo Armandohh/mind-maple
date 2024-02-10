@@ -38,8 +38,13 @@ function CreateDeck() {
     setDeck({ ...deck, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (data) => {
-    axios.post("http://localhost:3001/decks", data).then((res) => {
+  const onSubmit = (e) => {
+
+    //prevent page refresh
+    e.preventDefault();
+
+    //make api post call and create and store deck in database
+    axios.post("http://localhost:3001/decks", deck).then((res) => {
       console.log("Works!");
     });
   };
