@@ -7,8 +7,11 @@ app.use(cors());
 
 //-Routers
 //deck router
-const deckRouter = require('./routes/deck')
+const deckRouter = require('./routes/deck');
 app.use('/decks', deckRouter);
+//user router
+const userRouter = require('./routes/users');
+app.use('/user', userRouter);
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
