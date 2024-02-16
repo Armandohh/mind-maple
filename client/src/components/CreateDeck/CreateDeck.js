@@ -42,7 +42,6 @@ function CreateDeck() {
 
   //Handle form submission
   const onSubmit = (e) => {
-
     //prevent page refresh
     e.preventDefault();
 

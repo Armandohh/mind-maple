@@ -10,6 +10,12 @@
   align-items: center;
 }
 
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+}
+
 .links {
   flex: 50%;
 }

@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import RegistrationInput from './RegistrationInput'
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Registration.css"
 
 function Registration() {
+  let navigate = useNavigate();
   //Define state for the registration inputs
   const [registrationValues, setRegistrationValues] = useState({
     username: "",
@@ -74,10 +76,11 @@ function Registration() {
   const onSubmit = (e) => {
     //prevent page refresh
     e.preventDefault();
-    
+
     //make api post call and create profile and store new user in database
-    axios.post("http://localhost:3001/user", registrationValues).then((res)=> {
+    axios.post("http://localhost:3001/user", registrationValues).then((res) => {
       console.log("User created.");
+      navigate("/");
     })
   };
 
