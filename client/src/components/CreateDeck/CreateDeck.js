@@ -1,6 +1,6 @@
 import "./CreateDeck.css";
 import { useState } from "react";
-import FormInput from "./FormInput";
+import CreateDeckInput from "./CreateDeckInput";
 import axios from "axios";
 
 function CreateDeck() {
@@ -17,6 +17,7 @@ function CreateDeck() {
       name: "title",
       type: "text",
       placeholder: "Bio 120 Midterm",
+      label: "Title",
       errorMessage:
         "Title should be between 1 and 20 characters and cannot include any special character.",
       pattern: "^[A-Za-z0-9 ]{1,20}$",
@@ -27,6 +28,7 @@ function CreateDeck() {
       name: "description",
       type: "text",
       placeholder: "These are my study flashcards for my midterm.",
+      label: "Description",
       className: "description",
       pattern: "^[A-Za-z0-9 ]{0,50}$",
       errorMessage: "Description should not exceed 50 characters.",
@@ -38,6 +40,7 @@ function CreateDeck() {
     setDeck({ ...deck, [e.target.name]: e.target.value });
   };
 
+  //Handle form submission
   const onSubmit = (e) => {
 
     //prevent page refresh
@@ -50,18 +53,18 @@ function CreateDeck() {
   };
 
   return (
-    <div>
-      <h1>Create a New Deck</h1>
-      <form onSubmit={onSubmit}>
+    <div className="container">
+      <h1 className="title">Create a New Deck</h1>
+      <form className="createDeck" onSubmit={onSubmit}>
         {inputs.map((input) => (
-          <FormInput
+          <CreateDeckInput
             key={input.id}
             {...input}
             value={deck[input.name]}
             onChange={onChange}
           />
         ))}
-        <button type="submit">Create</button>
+        <button className="createDeckButton" type="submit">Create</button>
       </form>
     </div>
   );

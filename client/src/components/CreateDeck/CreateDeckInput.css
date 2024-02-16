@@ -1,0 +1,21 @@
+.deckInput {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block;
+}
+
+.deckInput.description {
+    height: 3s00px;
+    width: 700px;
+}
+
+.deckInput.description input{
+    height: 200px;
+}
