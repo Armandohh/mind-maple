@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import user_icon from '../assets/person.png'
-import email_icon from '../assets/email.png'
-import password_icon from '../assets/password.png'
 import RegistrationInput from './RegistrationInput'
+import axios from "axios";
 import "./Registration.css"
 
 function Registration() {
@@ -46,7 +44,7 @@ function Registration() {
     {
       id: 4,
       name: "password",
-      type: "text",
+      type: "password",
       placeholder: "Password",
       label: "Password",
       errorMessage: "Password should be 8-20 chracters and include at least 1 letter, 1 number and 1 special character",
@@ -55,8 +53,8 @@ function Registration() {
     },
     {
       id: 5,
-      name: "confirm",
-      type: "text",
+      name: "confirmPassword",
+      type: "password",
       placeholder: "Confirm Password",
       label: "Confirm Password",
       errorMessage: "Passwords don't match.",
@@ -74,7 +72,13 @@ function Registration() {
 
   //Handle form submission
   const onSubmit = (e) => {
+    //prevent page refresh
     e.preventDefault();
+    
+    //make api post call and create profile and store new user in database
+    axios.post("http://localhost:3001/user", registrationValues).then((res)=> {
+      console.log("User created.");
+    })
   };
 
   return (
