@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../helpers/AuthContext';
 import "./Login.css";
 
 function Login() {
     let navigate = useNavigate();
+    
+    //destructure and extract setAuthenticationState from the context value, allowing us to update the auth state of the user if they log in
+    const { setAuthenticationState } = useContext(AuthContext);
 
     //Define states for username and password
     const [loginValues, setLoginValues] = useState({
@@ -31,8 +35,6 @@ function Login() {
         },
 
     ]
-    //const { setAuthState } = useContext(AuthContext);
-
     //Update login values state when input value changes
     const onChange = (e) => {
         setLoginValues({ ...loginValues, [e.target.name]: e.target.value })
@@ -50,9 +52,13 @@ function Login() {
                 alert(response.data.error);
             }
             else {
-                //set the local storate
+                //set the access token in the local storage
                 localStorage.setItem("accessToken", response.data.token);
-                //setAuthState({ username: res.data.username, id: res.data.id, status: true });
+                
+                //set the authentication state
+                setAuthenticationState({ username: response.data.username, loggedIn: true });
+
+                //navigate back home
                 navigate("/");
             }
         });
