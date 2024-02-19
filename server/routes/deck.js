@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { Decks } = require("../models");
+const { validateToken } = require('../middleware/AuthMiddleware');
 
 //route to get all the decks
-router.get("/", async (req, res) => {
+router.get("/", validateToken, async (req, res) => {
     const decks = await Decks.findAll();
     res.json(decks);
 });
