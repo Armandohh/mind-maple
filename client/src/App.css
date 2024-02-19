@@ -16,6 +16,13 @@
   color: white;
 }
 
+.mindMaple {
+  margin-left: 20px;
+  margin-right: 10px;
+  color: white;
+  font-weight: bold;
+}
+
 .links {
   flex: 50%;
   height: 100%;
